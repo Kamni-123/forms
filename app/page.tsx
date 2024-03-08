@@ -1,4 +1,7 @@
+
 "use client";
+import { CardWithForm } from "./card";
+
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,8 +29,8 @@ const formSchema = z
   .object({
     CertificateName : z.string(),
     Description: z.string(),
-    X_coordinate: z.string(),
-    Y_coordinate: z.string(), 
+    X_coordinate: z.number(),
+    Y_coordinate: z.number(), 
     SelectFeild: z.enum(["Male", "Female"]),
   })
 
@@ -54,7 +57,7 @@ export default function Home() {
       Description: "",
       X_coordinate: "",
       Y_coordinate: "",
-      SelectFeild: z.enum(["Male", "Female"]),
+      // SelectFeild: z.enum(["Male", "Female"]),
     },
   });
 
@@ -66,6 +69,7 @@ export default function Home() {
 
   return (
     <div className=" rounded-md">
+    <CardWithForm/>
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Form {...form}>
         <div className="max-w-lg w-full flex px-10 py-10 shadow-2xl rounded-3xl">
